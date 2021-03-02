@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import java.net.URI;
 import java.util.function.Consumer;
 
-public class MoveVirtualRobot {
+public class MoveVirtualRobot implements VirtualRobot {
     private final String localHostName = "localhost";
     private final int port = 8090;
     private final String URL = "http://" + localHostName + ":" + port + "/api/move";
