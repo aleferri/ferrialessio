@@ -341,9 +341,9 @@ To abstract the communication we introduce an interface called VirtualRobot that
 <pre>
 public interface VirtualRobot {
     
-    public boolean moveForward(int duration);
+    public Future<Boolean> moveForward(int duration);
     
-    public boolean moveLeft(int duration);
+    public Future<Boolean> moveLeft(int duration);
   
 }
 </pre>
@@ -358,43 +358,47 @@ public default void boundaryWalk(Consumer&lt;Integer&gt; observer) {
 
         boolean collided;
         do {
-            collided = this.moveForward(d);
+            collided = this.moveForward(d).get();
             if ( ! collided ) {
                 observer.accept(d);
             }
-        } while(!collided);
+        } while(!collided.get());
 
-        this.moveLeft( 300 );
+        result = this.moveLeft( 300 );
+	result.get();
         observer.accept(-1);
 
         do {
-            collided = this.moveForward(d);
+            collided = this.moveForward(d).get();
             if ( ! collided ) {
                 observer.accept(d);
             }
         } while(!collided);
 
-        this.moveLeft(300);
+        result = this.moveLeft( 300 );
+	result.get();
         observer.accept(-1);
 
         do {
-            collided = this.moveForward(d);
+            collided = this.moveForward(d).get();
             if ( ! collided ) {
                 observer.accept(d);
             }
         } while(!collided);
 
-        this.moveLeft(300);
+        result = this.moveLeft( 300 );
+	result.get();
         observer.accept(-1);
 
         do {
-            collided = this.moveForward(d);
+            collided = this.moveForward(d).get();
             if ( ! collided ) {
                 observer.accept(d);
             }
         } while(!collided);
 
-        this.moveLeft(300);
+        result = this.moveLeft( 300 );
+	result.get();
         observer.accept(-1);
 }
 </pre>
