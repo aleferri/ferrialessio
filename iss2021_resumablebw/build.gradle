@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+description = 'Resumable Boundary Walk Of The Robot'
+
+mainClassName = 'boundarywalk.BoundaryWalkResumable'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation     'junit:junit:4.13'
+
+    //JSON
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation("org.json:json:20201115" )
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    implementation("com.googlecode.json-simple:json-simple:1.1.1")
+    //SOCKET.IO
+    implementation("com.github.nkzawa:socket.io-client:0.6.0")
+    // https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api
+    implementation("javax.websocket:javax.websocket-api:1.1")   //javax.websocket api is only the specification
+    implementation("org.glassfish.tyrus.bundles:tyrus-standalone-client:1.9")
+}
